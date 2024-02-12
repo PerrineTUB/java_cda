@@ -9,9 +9,8 @@ public class Main {
         Exemple test2 = new Exemple("Tubia", "Perrine");
         System.out.println(test2.nom);
 
-        Habitation maison1 = new Habitation("maison 1 ", 5, 5);
+        Habitation maison1 = new Habitation("maison 1 ", 5, 5,2);
 
-        maison1.surface();
         System.out.println("L'habitation: " + maison1.getNom() + ", à une surface de :" + maison1.surface() + "m².");
     }
 }
