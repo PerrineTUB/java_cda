@@ -49,4 +49,16 @@ public class Vehicule {
             return "Type de véhicule inconnu";
         }
     }
+
+    public String plusRapide(Vehicule newVehicule){
+        String msg = "";
+        if (this.vitesse > newVehicule.vitesse){
+            msg= "Le véhicule " + this.nom + " est plus rapide.";
+        } else if (this.vitesse < newVehicule.vitesse){
+            msg=  "Le véhicule " + newVehicule.nom + " est plus rapide.";
+        } else {
+            msg= "Les véhicules ont la même vitesse.";
+        }
+        return msg;
+    }
 }
