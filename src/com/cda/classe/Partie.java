@@ -1,15 +1,14 @@
 package com.cda.classe;
 
-public class Partie{
-
+public class Partie {
     private Personnage joueur1;
     private Personnage joueur2;
     private int nbrTour;
 
-    public Partie(Personnage gamer1, Personnage gamer2, int steps){
-        this.joueur1 = gamer1;
-        this.joueur2 = gamer2;
-        this.nbrTour = steps;
+    public Partie(Personnage perso1, Personnage perso2, int nbrTour) {
+        this.joueur1 = perso1;
+        this.joueur2 = perso2;
+        this.nbrTour = nbrTour;
     }
 
     public Personnage getJoueur1() {
@@ -36,25 +35,26 @@ public class Partie{
         this.nbrTour = nbrTour;
     }
 
-    public String lancerPartie(){
-        String msg ="";
-            for (int i = 0 ; i <= this.getNbrTour(); i++) {
-               this.joueur1.attaquer(this.joueur2);
-               this.joueur2.attaquer(this.joueur1);
+    public String lancerPartie() {
+        String message =  "";
+        while (nbrTour > 0) {
+            this.joueur1.attaquer(this.joueur2);
+            this.joueur2.attaquer(this.joueur1);
 
-               if (this.joueur1.getVie() <= 0) {
-                   msg = "Le gagnant est " + joueur2.getNom() ;
-                   break;
-               }
-               if (this.joueur2.getVie() <= 0){
-                   msg =  "Le gagnant est " + joueur1.getNom() ;
-                   break;
-               }
+            if (this.joueur2.getVie() <= 0) {
+                message = "Le gagnant est " + this.joueur1.getNom();
+                this.nbrTour = 0;
             }
-
-        if (this.joueur1.getVie() > 0 && this.joueur2.getVie() >0){
-            msg = "Egalité";
+            if (this.joueur1.getVie() <= 0) {
+                message = "Le gagnant est " + this.joueur2.getNom();
+                this.nbrTour = 0;
+            }
+            this.nbrTour--;
         }
-        return msg;
+        //if (this.joueur1.getVie() >0 && this.joueur2.getVie() > 0 ){
+            //message = "Egalité !";
+        //}
+        return message;
     }
+
 }

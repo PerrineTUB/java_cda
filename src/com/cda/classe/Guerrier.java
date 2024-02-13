@@ -17,9 +17,10 @@ public class Guerrier extends Personnage {
     }
 
     public void attaquer(Personnage cible){
-        double luck = Math.random();
-        if (luck <= 0.05) {
-            super.setDefense(super.getDefense() + bonusDefense);
+        if (Math.random() * 100 > 94.99) {
+            this.setVie(this.getVie() + this.bonusDefense);
+        } else {
+            super.attaquer(cible);
         }
     }
 }

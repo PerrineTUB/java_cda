@@ -1,6 +1,6 @@
 package com.cda.classe;
 
-public class Assassin extends Personnage{
+public class Assassin extends Personnage {
     private int bonusAttaque;
     public Assassin (String nom, int vie, int attaque, int defense, int bonusAttaque){
         super(nom, vie, attaque, defense);
@@ -17,9 +17,11 @@ public class Assassin extends Personnage{
 
     @Override
     public void attaquer(Personnage newPerso){
-        double luck = Math.random();
-        if (luck <= 0.05) {
-            super.setAttaque(super.getAttaque() + bonusAttaque);
+
+        if (Math.random() * 100 > 94.99) {
+            newPerso.setVie(newPerso.getVie() -(this.bonusAttaque + this.getAttaque() - newPerso.getDefense()) );
+        } else {
+            super.attaquer(newPerso);
         }
     };
 
